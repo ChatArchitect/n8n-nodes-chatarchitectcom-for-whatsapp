@@ -1,4 +1,7 @@
 # n8n-nodes-chatarchitect.com-for-whatsapp
+
+**Package "n8n-nodes-chatarchitect.com-for-whatsapp" is deprecated, a new one is "n8n-nodes-chatarchitectcom-for-whatsapp" (without the dot symbol in it).**
+
 The application integrates the official WhatsApp Business API into your n8n.
 
 Incoming and outgoing messages, media, buttons, also you can initiate a conversation.
