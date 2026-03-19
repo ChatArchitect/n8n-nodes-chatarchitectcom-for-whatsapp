@@ -159,6 +159,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				let body: IDataObject = {};
 				let response: IDataObject;
 				const method = 'POST' as IHttpRequestMethods;
+				let endpoint: string = '/whatsappmessage';
 
 				if (resource === 'message' && operation === 'sendText') {
 					body = {
@@ -172,24 +173,41 @@ export class ChatArchitectWhatsApp implements INodeType {
 				}
 
 				if (resource === 'media') {
+
+					let type = operation.replace('send', '').toLowerCase()
+
+					if (type === 'document') {
+						type = 'file';
+					}
+
 					body = {
 						channel: 'whatsapp',
 						destination: this.getNodeParameter('destination', i),
 						payload: {
-							type: operation.replace('send', '').toLowerCase(),
+							type: type,
 							url: this.getNodeParameter('fileUrl', i),
-							caption: this.getNodeParameter('caption', i),
 						},
 					};
+
+					if (type !== 'audio') {
+						(body.payload as IDataObject).caption = this.getNodeParameter('caption', i)
+					}
 				}
 
 				if (resource === 'webhook' && operation === 'set') {
+
+					endpoint = '/webhook';
+
 					body = {
-						url: this.getNodeParameter('webhookUrl', i),
+						channel: 'whatsapp',
+						webhook_separate: 'false',
+						webhook: this.getNodeParameter('webhookUrl', i),
+						webhook_message_event: this.getNodeParameter('webhookUrl', i),
+						webhook_user_event: this.getNodeParameter('webhookUrl', i),
 					};
 				}
 
-				response = (await apiRequest.call(this, method, body)) as IDataObject;
+				response = (await apiRequest.call(this, method, body, {}, 'https://api.chatarchitect.com' + endpoint)) as IDataObject;
 
 				returnData.push({
 					json: response,

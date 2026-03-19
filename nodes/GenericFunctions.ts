@@ -31,7 +31,7 @@ export async function apiRequest(
 		method,
 		body,
 		qs: query,
-		url: uri ?? 'https://api.chatarchitect.com/whatsapp',
+		url: uri ?? 'https://api.chatarchitect.com/whatsappmessage',
 		json: true,
 	};
 
