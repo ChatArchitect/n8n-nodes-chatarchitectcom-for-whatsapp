@@ -159,7 +159,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				let body: IDataObject = {};
 				let response: IDataObject;
 				const method = 'POST' as IHttpRequestMethods;
-				let endpoint: string = '/whatsappmessage';
+				let endpoint = '/whatsappmessage';
 
 				if (resource === 'message' && operation === 'sendText') {
 					body = {
@@ -174,7 +174,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 
 				if (resource === 'media') {
 
-					let type = operation.replace('send', '').toLowerCase()
+					let type = operation.replace('send', '').toLowerCase();
 
 					if (type === 'document') {
 						type = 'file';
@@ -184,13 +184,13 @@ export class ChatArchitectWhatsApp implements INodeType {
 						channel: 'whatsapp',
 						destination: this.getNodeParameter('destination', i),
 						payload: {
-							type: type,
+							type,
 							url: this.getNodeParameter('fileUrl', i),
 						},
 					};
 
 					if (type !== 'audio') {
-						(body.payload as IDataObject).caption = this.getNodeParameter('caption', i)
+						(body.payload as IDataObject).caption = this.getNodeParameter('caption', i);
 					}
 				}
 
