@@ -185,9 +185,15 @@ export class ChatArchitectWhatsApp implements INodeType {
 						destination: this.getNodeParameter('destination', i),
 						payload: {
 							type,
-							url: this.getNodeParameter('fileUrl', i),
 						},
 					};
+
+					if (type === 'image') {
+						(body.payload as IDataObject).originalUrl = this.getNodeParameter('fileUrl', i);
+						(body.payload as IDataObject).previewUrl = this.getNodeParameter('fileUrl', i);
+					} else {
+						(body.payload as IDataObject).url = this.getNodeParameter('fileUrl', i);
+					}
 
 					if (type !== 'audio') {
 						(body.payload as IDataObject).caption = this.getNodeParameter('caption', i);
