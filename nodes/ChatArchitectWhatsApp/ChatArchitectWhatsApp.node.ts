@@ -14,7 +14,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'ChatArchitect WhatsApp',
 		name: 'chatArchitectWhatsApp',
-		icon: 'file:whatsapp.svg',
+		icon: { light: 'file:../../icons/whatsapp.svg', dark: 'file:../../icons/whatsapp.dark.svg' },
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
@@ -23,8 +23,8 @@ export class ChatArchitectWhatsApp implements INodeType {
 			name: 'ChatArchitect WhatsApp',
 		},
 		usableAsTool: true,
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
 				name: 'chatArchitectWhatsAppApi',
@@ -39,8 +39,8 @@ export class ChatArchitectWhatsApp implements INodeType {
 				noDataExpression: true,
 				default: 'message',
 				options: [
-					{ name: 'Message', value: 'message' },
 					{ name: 'Media', value: 'media' },
+					{ name: 'Message', value: 'message' },
 					{ name: 'Webhook', value: 'webhook' },
 				],
 			},
@@ -157,7 +157,6 @@ export class ChatArchitectWhatsApp implements INodeType {
 
 			try {
 				let body: IDataObject = {};
-				let response: IDataObject;
 				const method = 'POST' as IHttpRequestMethods;
 				let endpoint = '/whatsappmessage';
 
@@ -213,7 +212,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 					};
 				}
 
-				response = (await apiRequest.call(this, method, body, {}, 'https://api.chatarchitect.com' + endpoint)) as IDataObject;
+				const response = (await apiRequest.call(this, method, body, {}, 'https://api.chatarchitect.com' + endpoint)) as IDataObject;
 
 				returnData.push({
 					json: response,

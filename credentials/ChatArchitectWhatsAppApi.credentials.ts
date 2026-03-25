@@ -1,9 +1,10 @@
-import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { IAuthenticateGeneric, Icon, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class ChatArchitectWhatsAppApi implements ICredentialType {
 	name = 'chatArchitectWhatsAppApi';
 	displayName = 'WhatsApp Account API';
 	documentationUrl = 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064';
+	icon: Icon = { light: 'file:../icons/whatsapp.svg', dark: 'file:../icons/whatsapp.dark.svg' };
 
 	properties: INodeProperties[] = [
 		{

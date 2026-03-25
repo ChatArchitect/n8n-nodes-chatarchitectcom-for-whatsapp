@@ -3,8 +3,7 @@ node_modules/
 npm-debug.log*
 yarn-error.log*
 
-.eslintrc.js
-.eslintrc.prepublish.js
+eslint.config.mjs
 .prettierrc.js
 .editorconfig
 tslint.json
