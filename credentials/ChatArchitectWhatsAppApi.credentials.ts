@@ -2,7 +2,7 @@ import type { IAuthenticateGeneric, Icon, ICredentialTestRequest, ICredentialTyp
 
 export class ChatArchitectWhatsAppApi implements ICredentialType {
 	name = 'chatArchitectWhatsAppApi';
-	displayName = 'WhatsApp Account API';
+	displayName = 'ChatArchitect WhatsApp API';
 	documentationUrl = 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064';
 	icon: Icon = { light: 'file:../icons/whatsapp.svg', dark: 'file:../icons/whatsapp.dark.svg' };
 

@@ -66,6 +66,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'destination',
 				type: 'string',
 				default: '',
+				description: 'Recipient phone number in international format (e.g. +1234567890)',
 				displayOptions: {
 					show: { resource: ['message'], operation: ['sendText'] },
 				},
@@ -75,6 +76,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'text',
 				type: 'string',
 				default: '',
+				description: 'Text content of the message',
 				displayOptions: {
 					show: { resource: ['message'], operation: ['sendText'] },
 				},
@@ -100,6 +102,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'destination',
 				type: 'string',
 				default: '',
+				description: 'Recipient phone number in international format (e.g. +1234567890)',
 				displayOptions: {
 					show: { resource: ['media'] },
 				},
@@ -109,6 +112,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'fileUrl',
 				type: 'string',
 				default: '',
+				description: 'Public URL of the media file to send',
 				displayOptions: {
 					show: { resource: ['media'] },
 				},
@@ -118,6 +122,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'caption',
 				type: 'string',
 				default: '',
+				description: 'Optional caption to include with the media file',
 				displayOptions: {
 					show: { resource: ['media'] },
 				},
@@ -140,6 +145,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 				name: 'webhookUrl',
 				type: 'string',
 				default: '',
+				description: 'Public URL that will receive incoming WhatsApp events and messages',
 				displayOptions: {
 					show: { resource: ['webhook'], operation: ['set'] },
 				},
